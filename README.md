@@ -1,8 +1,8 @@
 # Personal Portfolio
 
-I made the map using Tiled and the asset packs listed below.
+Based on [video](https://www.youtube.com/watch?v=wy_fSStEgMs) by JSLegendDev.
 
-Based on ... by ...
+I made the map using Tiled and the asset packs listed below.
 
 ## Sources
 
@@ -13,4 +13,3 @@ Based on ... by ...
 - <https://danieldiggle.itch.io/sunnyside>
 - <https://penzilla.itch.io/top-down-retro-interior>
 - <https://datagoblin.itch.io/monogram>
-- <https://www.youtube.com/watch?v=wy_fSStEgMs>
