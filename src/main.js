@@ -20,6 +20,8 @@ k.loadSprite('map', './map.png');
 
 k.setBackground(k.Color.fromHex('#001e00'));
 
+k.setCursor('url(./cursor.png), auto');
+
 k.scene('main', async () => {
   const mapData = await (await fetch('./map.json')).json();
   const layers = mapData.layers;
@@ -72,6 +74,7 @@ k.scene('main', async () => {
         }
 
         if (boundary.name) {
+          console.log(boundary.name);
           player.onCollide(boundary.name, () => {
             player.isInDialogue = true;
             displayDialogue(
