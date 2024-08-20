@@ -25,7 +25,8 @@ html {
 body {
   font-family: monogram, monospace;
   font-size: 2rem;
-  line-height: 1.5;
+  word-spacing: 0.2rem;
+  line-height: 1.3;
   min-height: 100svh;
   overflow: hidden;
 }
@@ -42,7 +43,7 @@ input,
 select,
 textarea {
   font: inherit;
-  line-height: 1.15;
+  line-height: 1;
 }
 
 canvas,
@@ -71,81 +72,90 @@ p {
 
 #app {
   isolation: isolate;
-  position: relative;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
-#textbox {
+.hidden {
+  display: none /* !important */;
+}
+
+.ui {
   position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 2vh;
-  min-height: 10vh;
-  background: white;
-  border-radius: 3px;
-  outline-style: solid;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  word-spacing: 0.2rem;
-  filter: drop-shadow(0 0 0.75rem rgb(112, 112, 112));
+  background-color: #fff;
+  outline: solid 3px #000;
+  filter: drop-shadow(rgb(100, 100, 100) 0 0 10px);
 }
 
 .ui-text {
-  margin: 0;
   user-select: none;
 }
 
-.ui-close-btn {
-  font-family: inherit;
-  border-style: none;
-  border-radius: 3px;
-  padding: 1rem;
-  font-size: inherit;
+.btn-close {
+  margin-top: 2rem;
 }
 
-.btn-container {
+#ui-large {
+  display: block;
+  top: 2%;
+  bottom: 2%;
+  left: 2%;
+  right: 2%;
+}
+
+#ui-medium {
+  /* display: block; */
+  top: 2%;
+  bottom: 2%;
+  left: 10%;
+  right: 10%;
+}
+
+#resume {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#skills {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#skills-content {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+}
+
+#ui-small {
+  bottom: 2%;
+  left: 15%;
+  right: 15%;
+  min-height: 20%;
+  /* display: flex; */
+  flex-direction: column;
+}
+
+#dialogue {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#dialogue-btn-close {
   align-self: flex-end;
-  margin-top: 1rem;
 }
-
-/*
-:root {
-  color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-text: hsl(219, 92%, 5%);
-    --color-background: hsl(228, 100%, 99%);
-    --color-primary: hsl(222, 98%, 23%);
-    --color-secondary: hsl(213, 68%, 84%);
-    --color-accent: hsl(220, 75%, 72%);
-    --color-status-red: hsl(4, 91%, 69%);
-    --color-status-yellow: hsl(47, 97%, 45%);
-    --color-status-green: hsl(155, 57%, 55%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: hsl(219, 92%, 95%);
-    --color-background: hsl(228, 100%, 1%);
-    --color-primary: hsl(222, 98%, 77%);
-    --color-secondary: hsl(213, 68%, 16%);
-    --color-accent: hsl(220, 75%, 28%);
-    --color-status-red: hsl(4, 91%, 31%);
-    --color-status-yellow: hsl(47, 97%, 55%);
-    --color-status-green: hsl(155, 57%, 45%);
-  }
-}
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-}
-*/

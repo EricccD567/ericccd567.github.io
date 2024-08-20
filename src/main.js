@@ -1,9 +1,9 @@
-import { scaleFactor } from './constants';
+import { bgColor, scaleFactor } from './constants';
 import { k } from './kaboomCtx';
-import { displayDialogue, move, setCamScale } from './utils';
+import { displayUI, move, setCamScale } from './utils';
 
-// with vite, if in public folder then have direct access with ./
-k.loadSprite('spritesheet', './spritesheet-player.png', {
+// vite: have direct access to public folder with ./
+k.loadSprite('player', './spritesheet-player.png', {
   sliceX: 4, // width 64 / 16
   sliceY: 6, // height 96 / 16
   anims: {
@@ -18,7 +18,7 @@ k.loadSprite('spritesheet', './spritesheet-player.png', {
 
 k.loadSprite('map', './map.png');
 
-k.setBackground(k.Color.fromHex('#001e00'));
+k.setBackground(k.Color.fromHex(bgColor));
 
 k.setCursor('url(./cursor.png), auto');
 
@@ -29,7 +29,7 @@ k.scene('main', async () => {
   const map = k.add([k.sprite('map'), k.pos(0), k.scale(scaleFactor)]);
 
   const player = k.make([
-    k.sprite('spritesheet', { anim: 'idle-down' }),
+    k.sprite('player', { anim: 'idle-down' }),
     k.anchor('center'),
     k.area({
       shape: new k.Rect(k.vec2(0, 4), 9, 10),
@@ -40,7 +40,7 @@ k.scene('main', async () => {
     {
       speed: 250,
       direction: 'down',
-      isInDialogue: false,
+      isInUI: false,
     },
     'player',
   ]);
@@ -73,14 +73,10 @@ k.scene('main', async () => {
           ]);
         }
 
-        if (boundary.name) {
-          console.log(boundary.name);
+        if (boundary.type === 'interactive') {
           player.onCollide(boundary.name, () => {
-            player.isInDialogue = true;
-            displayDialogue(
-              'In development, check back soon!',
-              () => (player.isInDialogue = false)
-            );
+            player.isInUI = true;
+            displayUI(boundary.name, () => (player.isInUI = false));
           });
         }
       }
@@ -112,7 +108,7 @@ k.scene('main', async () => {
   });
 
   k.onMouseDown((mouseBtn) => {
-    if (mouseBtn !== 'left' || player.isInDialogue) return;
+    if (mouseBtn !== 'left' || player.isInUI) return;
 
     const worldMousePos = k.toWorld(k.mousePos());
     player.moveTo(worldMousePos, player.speed);
@@ -146,7 +142,7 @@ k.scene('main', async () => {
   });
 
   k.onKeyDown((key) => {
-    if (player.isInDialogue) return;
+    if (player.isInUI) return;
 
     const keyMap = [
       k.isKeyDown('up'),

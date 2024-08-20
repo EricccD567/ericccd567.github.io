@@ -1,6 +1,19 @@
-export function displayDialogue(text, onDisplayEnd) {
+export function displayUI(text, onDisplayEnd) {
   const dialogueUI = document.getElementById('textbox-container');
   const dialogue = document.getElementById('dialogue');
+
+  // <div id="textbox-container" style="display: none">
+  //   <div id="textbox">
+  //     <p id="dialogue" class="ui-text"></p>
+  //     <div class="btn-container">
+  //       <button id="close" class="ui-close-btn">Close</button>
+  //     </div>
+  //   </div>
+  // </div>
+
+  // computer console
+  // resume skills
+  // food bag art music about degree
 
   dialogueUI.style.display = 'block';
 
@@ -54,5 +67,3 @@ export function setCamScale(k) {
 
   k.camScale(k.vec2(1.5));
 }
-
-// display hidden using class
