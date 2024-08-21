@@ -7,6 +7,7 @@
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-apple-touch.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./node_modules/@sakun/system.css" />
     <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css" />
     <link rel="stylesheet" href="./src/style.css" />
     <title>EricccD567 Portfolio</title>
@@ -15,9 +16,105 @@
     <div id="app">
       <div id="ui">
         <div id="ui-large" class="ui hidden">
-          <!-- add media width and height -->
-          <!-- Made with ♡ by Eric D. -->
-          <div id="computer" class="hidden"></div>
+          <div id="computer" class="hidden">
+            <header id="computer-header">
+              <nav id="computer-nav">
+                <ul id="computer-menu-desktop" role="menu-bar">
+                  <li role="menu-item" tabindex="0" aria-haspopup="true">
+                    <img
+                      class="logo gs"
+                      src="./favicon.svg"
+                      alt="logo"
+                      width="220"
+                      height="220"
+                    />
+                    <ul role="menu">
+                      <li role="menu-item" class="divider"><a>Eric D.</a></li>
+                      <li role="menu-item">
+                        <a>Made with <i class="nes-icon heart love"></i></a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li role="menu-item" tabindex="0" aria-haspopup="false">
+                    Projects
+                  </li>
+                  <li role="menu-item" tabindex="0" aria-haspopup="false">
+                    Experience
+                  </li>
+                </ul>
+                <ul id="computer-menu-mobile" role="menu-bar" class="hidden">
+                  <li role="menu-item" tabindex="0" aria-haspopup="true">
+                    <img
+                      class="logo gs"
+                      src="./favicon.svg"
+                      alt="logo"
+                      width="220"
+                      height="220"
+                    />
+                    <ul role="menu">
+                      <li role="menu-item" class="divider"><a>Projects</a></li>
+                      <li role="menu-item" class="divider">
+                        <a>Experience</a>
+                      </li>
+                      <li role="menu-item" class="divider"><a>Eric D.</a></li>
+                      <li role="menu-item">
+                        <a>Made with <i class="nes-icon heart love"></i></a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <i id="computer-btn-close" class="nes-icon close"></i>
+            </header>
+            <main id="computer-main">
+              <div id="projects-content" class="window">
+                <div class="title-bar">
+                  <button aria-label="Close" class="close"></button>
+                  <h1 class="title">Projects</h1>
+                  <button aria-label="Resize" class="resize"></button>
+                </div>
+                <div class="details-bar">
+                  <span></span>
+                  <span id="projects-count"></span>
+                  <span></span>
+                </div>
+                <div id="projects" class="window-pane"></div>
+              </div>
+              <div id="experience-content" class="window">
+                <div class="title-bar">
+                  <button aria-label="Close" class="close"></button>
+                  <h1 class="title">Experience</h1>
+                  <button aria-label="Resize" class="resize"></button>
+                </div>
+                <div class="details-bar">
+                  <span></span>
+                  <span id="experience-count"></span>
+                  <span></span>
+                </div>
+                <div id="experience" class="window-pane"></div>
+              </div>
+              <section id="computer-apps" class="icon-list">
+                <a
+                  href="mailto:eric.dai2194@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="nes-icon gmail is-large gs"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/ericccd567/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="nes-icon linkedin is-large gs"></i
+                ></a>
+                <a
+                  href="https://github.com/EricccD567"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i class="nes-icon github is-large gs"></i
+                ></a>
+              </section>
+            </main>
+          </div>
           <div id="console" class="hidden">
             <iframe
               id="console-content"

@@ -67,6 +67,7 @@ h4,
 h5,
 h6,
 p {
+  font-family: inherit;
   overflow-wrap: break-word;
 }
 
@@ -99,17 +100,90 @@ p {
 
 #ui-large {
   display: block;
+  padding: 0;
+  border-radius: 15px;
+  outline: none;
   top: 2%;
   bottom: 2%;
   left: 2%;
   right: 2%;
 }
 
-#console {
+#computer {
+  display: block;
+  cursor: auto;
+  background-image: url(../wallpaper.jpg);
+  background-origin: border-box;
+  border: dotted 2px #000;
+  border-radius: inherit;
   height: 100%;
-  background-color: rgba(255, 189, 189, 1);
-  outline: solid 1rem rgba(255, 189, 189, 1);
+}
+
+.gs {
+  filter: grayscale(100%);
+}
+
+#computer-header {
+  padding: 0 1rem;
+  background-color: #fff;
+  border-bottom: solid 3px #000;
+  border-radius: 15px 15px 0 0;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li {
+  font-size: 1.5rem;
+}
+
+li:has(img) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 1em;
+}
+
+.love {
+  margin-right: 0;
+  margin-bottom: 4px;
+  transform: scale(1.5);
+}
+
+#computer-menu-mobile {
+  display: none !important;
+  /*  */
+}
+
+#computer-btn-close {
+  margin-bottom: 8px;
+  transform: scale(1.5);
+}
+
+#computer-btn-close:hover {
+  cursor: pointer;
+  outline: dotted 2px #f22426;
+}
+
+#computer-btn-close:active {
+  outline: dotted 2px #000;
+}
+
+/* overflow: auto; */
+/* outline: dotted 1px #000; invert colors? */
+/* logo cursor */
+/* other check */
+
+#console {
+  padding: 1rem;
+  background-color: rgba(255, 189, 189, 1);
+  border-radius: 0;
+  outline: solid 3px #000;
+  height: 100%;
+  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -140,13 +214,13 @@ p {
 }
 
 #skills-content {
+  overflow: auto;
   flex-grow: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: auto;
 }
 
 #ui-small {
