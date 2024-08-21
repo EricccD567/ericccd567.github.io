@@ -110,13 +110,14 @@ p {
 }
 
 #computer {
-  display: block;
   cursor: auto;
   background-image: url(../wallpaper.jpg);
   background-origin: border-box;
   border: dotted 2px #000;
   border-radius: inherit;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .gs {
@@ -154,8 +155,7 @@ li:has(img) {
 }
 
 #computer-menu-mobile {
-  display: none !important;
-  /*  */
+  display: none !important; /*  */
 }
 
 #computer-btn-close {
@@ -172,10 +172,59 @@ li:has(img) {
   outline: dotted 2px #000;
 }
 
-/* overflow: auto; */
-/* outline: dotted 1px #000; invert colors? */
-/* logo cursor */
-/* other check */
+#computer-main {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.window-fix {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#projects-content {
+  position: absolute;
+  z-index: 2;
+  top: 5%;
+  bottom: 5%;
+  left: 5%;
+  right: 15%;
+}
+
+#experience-content {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 10%;
+  left: 0;
+  right: 20%;
+}
+
+#computer-apps {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-link {
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.app-text {
+  font-family: Chicago;
+  font-size: 1rem;
+  padding: 2px;
+  background-color: #fff;
+  margin-bottom: 3rem;
+  width: fit-content;
+}
 
 #console {
   padding: 1rem;
