@@ -215,15 +215,23 @@ li:has(img) {
   cursor: pointer;
   font-size: 1rem;
   line-height: 1;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  margin-bottom: 3rem;
+}
+
+.app-link:hover {
+  color: inherit;
+  text-decoration: none;
 }
 
 .app-text {
   font-family: Chicago;
-  font-size: 1rem;
   padding: 2px;
   background-color: #fff;
-  margin-bottom: 3rem;
   width: fit-content;
+  margin: auto;
 }
 
 #console {
