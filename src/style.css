@@ -79,7 +79,7 @@ p {
 }
 
 .hidden {
-  display: none /* !important */;
+  display: none !important;
 }
 
 .ui {
@@ -99,14 +99,13 @@ p {
 }
 
 #ui-large {
-  display: block;
   padding: 0;
   border-radius: 15px;
   outline: none;
-  top: 2%;
-  bottom: 2%;
-  left: 2%;
-  right: 2%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 #computer {
@@ -240,14 +239,13 @@ li:has(img) {
   border-radius: 0;
   outline: solid 3px #000;
   height: 100%;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
 #ui-medium {
-  /* display: block; */
   top: 2%;
   bottom: 2%;
   left: 10%;
@@ -285,7 +283,7 @@ li:has(img) {
   left: 15%;
   right: 15%;
   min-height: 20%;
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
 }
 
