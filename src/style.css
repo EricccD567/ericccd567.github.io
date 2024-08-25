@@ -83,14 +83,13 @@ p {
 }
 
 @keyframes appear-block {
-  0%,
-  17.5% {
+  0% {
     display: none;
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
   }
 
-  70% {
+  55% {
     display: block;
     opacity: 1;
   }
@@ -300,14 +299,13 @@ li:has(img) {
 }
 
 @keyframes appear-flex {
-  0%,
-  17.5% {
+  0% {
     display: none;
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
   }
 
-  70% {
+  55% {
     display: flex;
     opacity: 1;
   }

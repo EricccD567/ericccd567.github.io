@@ -2,6 +2,8 @@ export const bgColor = '#112211';
 
 export const scaleFactor = 3.5;
 
+export const playerSpeed = 250;
+
 const computerContent = {
   projects: [
     {

@@ -1,24 +1,6 @@
-import { bgColor, scaleFactor } from './constants';
+import { bgColor, playerSpeed, scaleFactor } from './constants';
 import { k } from './kaboomCtx';
 import { displayUI, move, setCamScale } from './utils';
-
-const debug = false;
-if (debug) {
-  const c = document.getElementById('game');
-  c.onmousedown = () => {
-    console.log('canvas mouse down');
-  };
-  c.onmouseup = () => {
-    console.log('canvas mouse up');
-  };
-  // function triggerMouseEvent(node, eventType) {
-  //   const clickEvent = new Event(eventType, { bubbles: true, cancelable: true });
-  //   node.dispatchEvent(clickEvent);
-  // }
-  // triggerMouseEvent(cv, 'mousedown');
-  // triggerMouseEvent(cv, 'mouseup');
-  // triggerMouseEvent(cv, 'click');
-}
 
 // vite: have direct access to public folder with ./
 k.loadSprite('player', './spritesheet-player.png', {
@@ -56,12 +38,22 @@ k.scene('main', async () => {
     k.pos(),
     k.scale(scaleFactor),
     {
-      speed: 250,
+      speed: playerSpeed,
       direction: 'down',
       isInUI: false,
     },
     'player',
   ]);
+
+  function onRelease() {
+    if (player.direction === 'down') {
+      player.play('idle-down');
+    } else if (player.direction === 'up') {
+      player.play('idle-up');
+    } else {
+      player.play('idle-side');
+    }
+  }
 
   for (const layer of layers) {
     if (layer.name === 'boundaries') {
@@ -93,7 +85,9 @@ k.scene('main', async () => {
 
         if (boundary.type === 'interactive') {
           player.onCollide(boundary.name, () => {
+            player.speed = 0;
             player.isInUI = true;
+            onRelease();
             displayUI(boundary.name, () => {
               player.isInUI = false;
             });
@@ -127,9 +121,12 @@ k.scene('main', async () => {
     k.camPos(player.pos.x, player.pos.y + 75);
   });
 
+  k.onMousePress((mouseBtn) => {
+    if (mouseBtn === 'left' && !player.isInUI) player.speed = playerSpeed;
+  });
+
   k.onMouseDown((mouseBtn) => {
-    if (debug) console.log('kaboom mouse down');
-    if (mouseBtn !== 'left' || player.isInUI) return;
+    if (mouseBtn !== 'left' || player.isInUI || player.speed === 0) return;
 
     const worldMousePos = k.toWorld(k.mousePos());
     player.moveTo(worldMousePos, player.speed);
@@ -164,6 +161,10 @@ k.scene('main', async () => {
 
   k.onKeyDown((key) => {
     if (player.isInUI) return;
+    if (k.isKeyDown('enter')) return;
+    if (k.isMouseDown('left')) return;
+
+    player.speed = playerSpeed;
 
     const keyMap = [
       k.isKeyDown('up'),
@@ -205,16 +206,6 @@ k.scene('main', async () => {
       return;
     }
   });
-
-  function onRelease() {
-    if (player.direction === 'down') {
-      player.play('idle-down');
-    } else if (player.direction === 'up') {
-      player.play('idle-up');
-    } else {
-      player.play('idle-side');
-    }
-  }
 
   k.onMouseRelease(onRelease);
   k.onKeyRelease(onRelease);
