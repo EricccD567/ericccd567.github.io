@@ -73,7 +73,7 @@ export function displayUI(item, onDisplayEnd) {
           return;
         }
         clearInterval(intervalRef);
-      }, 15);
+      }, 25);
 
       onClose = () => {
         uiText.innerHTML = '';

@@ -2,6 +2,24 @@ import { bgColor, scaleFactor } from './constants';
 import { k } from './kaboomCtx';
 import { displayUI, move, setCamScale } from './utils';
 
+const debug = false;
+if (debug) {
+  const c = document.getElementById('game');
+  c.onmousedown = () => {
+    console.log('canvas mouse down');
+  };
+  c.onmouseup = () => {
+    console.log('canvas mouse up');
+  };
+  // function triggerMouseEvent(node, eventType) {
+  //   const clickEvent = new Event(eventType, { bubbles: true, cancelable: true });
+  //   node.dispatchEvent(clickEvent);
+  // }
+  // triggerMouseEvent(cv, 'mousedown');
+  // triggerMouseEvent(cv, 'mouseup');
+  // triggerMouseEvent(cv, 'click');
+}
+
 // vite: have direct access to public folder with ./
 k.loadSprite('player', './spritesheet-player.png', {
   sliceX: 4, // width 64 / 16
@@ -76,7 +94,9 @@ k.scene('main', async () => {
         if (boundary.type === 'interactive') {
           player.onCollide(boundary.name, () => {
             player.isInUI = true;
-            displayUI(boundary.name, () => (player.isInUI = false));
+            displayUI(boundary.name, () => {
+              player.isInUI = false;
+            });
           });
         }
       }
@@ -108,6 +128,7 @@ k.scene('main', async () => {
   });
 
   k.onMouseDown((mouseBtn) => {
+    if (debug) console.log('kaboom mouse down');
     if (mouseBtn !== 'left' || player.isInUI) return;
 
     const worldMousePos = k.toWorld(k.mousePos());
