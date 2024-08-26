@@ -1054,9 +1054,9 @@
         {
           "height": 26.9090909090909,
           "id": 88,
-          "name": "",
+          "name": "food",
           "rotation": 0,
-          "type": "",
+          "type": "interactive",
           "visible": true,
           "width": 7.81818181818181,
           "x": 182,
@@ -1087,7 +1087,7 @@
         {
           "height": 0,
           "id": 91,
-          "name": "food",
+          "name": "",
           "polygon": [
             {
               "x": 0,
@@ -1139,7 +1139,7 @@
             }
           ],
           "rotation": 0,
-          "type": "interactive",
+          "type": "",
           "visible": true,
           "width": 0,
           "x": 190.727272727273,
@@ -1465,7 +1465,7 @@
         {
           "height": 13.6666666666667,
           "id": 114,
-          "name": "game",
+          "name": "console",
           "rotation": 0,
           "type": "interactive",
           "visible": true,
