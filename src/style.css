@@ -82,7 +82,7 @@ p {
   display: none !important;
 }
 
-@keyframes appear-block {
+@keyframes appear {
   0% {
     display: none;
     opacity: 0;
@@ -90,26 +90,19 @@ p {
   }
 
   55% {
-    display: block;
+    display: var(--dp);
     opacity: 1;
   }
 }
 
 .ui {
+  --dp: block;
+  animation: appear 1s;
   position: absolute;
   padding: 1rem;
   background-color: #fff;
   outline: solid 3px #000;
   filter: drop-shadow(rgb(100, 100, 100) 0 0 10px);
-  animation: appear-block 1s;
-}
-
-.ui-text {
-  user-select: none;
-}
-
-.btn-close {
-  margin-top: 2rem;
 }
 
 #ui-large {
@@ -120,6 +113,44 @@ p {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+#ui-medium {
+  top: 2%;
+  bottom: 2%;
+  left: 10%;
+  right: 10%;
+}
+
+#ui-small {
+  --dp: flex;
+  animation: appear 1s;
+  bottom: 2%;
+  left: 15%;
+  right: 15%;
+  min-height: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.center-btn {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.max-space {
+  width: 100%;
+  height: 100%;
+}
+
+.ui-text {
+  user-select: none;
+}
+
+.btn-close {
+  margin-top: 2rem;
 }
 
 #computer {
@@ -248,11 +279,6 @@ li:has(img) {
   background-color: rgba(255, 189, 189, 1);
   border: solid 3px #000;
   border-radius: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 }
 
 #boot {
@@ -265,60 +291,16 @@ li:has(img) {
   align-items: flex-start;
 }
 
-#ui-medium {
-  top: 2%;
-  bottom: 2%;
-  left: 10%;
-  right: 10%;
-}
-
-#resume {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#skills {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 #skills-content {
   overflow: auto;
+  padding: 0 clamp(0rem, 3.5vw, 5rem);
   flex-grow: 1;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
 
-@keyframes appear-flex {
-  0% {
-    display: none;
-    opacity: 0;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  55% {
-    display: flex;
-    opacity: 1;
-  }
-}
-
-#ui-small {
-  bottom: 2%;
-  left: 15%;
-  right: 15%;
-  min-height: 20%;
-  display: flex;
-  flex-direction: column;
-  animation: appear-flex 1s;
+#skills-content > h2 {
+  font-size: clamp(2rem, 8vw, 4rem);
+  text-align: center;
 }
 
 #dialogue {
@@ -327,6 +309,10 @@ li:has(img) {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+#dialogue-content {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
 #dialogue-btn-close {

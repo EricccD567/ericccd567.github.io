@@ -6,7 +6,7 @@ I made the map using [Tiled](https://thorbjorn.itch.io/tiled) and the asset pack
 
 I made the UI using [NES.css](https://github.com/nostalgic-css/NES.css) and [system.css](https://github.com/sakofchit/system.css) components.
 
-Kirby game clone tutorial by JSLegendDev: <https://www.youtube.com/watch?v=R6WvJOiX99s>
+<!-- Kirby game clone tutorial by JSLegendDev: <https://www.youtube.com/watch?v=R6WvJOiX99s> -->
 
 ## Sources
 

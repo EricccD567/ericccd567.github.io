@@ -247,19 +247,15 @@ const skillsContent = {
   soft: [
     {
       skill: 'Learning',
-      level: 10,
+      level: 9,
     },
     {
-      skill: 'Attention to Detail',
+      skill: 'Detailed',
       level: 9,
     },
     {
       skill: 'Organisation',
       level: 9,
-    },
-    {
-      skill: 'Logical Analysis',
-      level: 8,
     },
     {
       skill: 'Problem Solving',
@@ -291,17 +287,13 @@ export const data = {
     uiBase: 'ui-large',
     ui: 'console',
     uiClose: 'console-btn-close',
-    content: {
-      link: '',
-    },
+    content: {},
   },
   resume: {
     uiBase: 'ui-medium',
     ui: 'resume',
     uiClose: 'resume-btn-close',
-    content: {
-      link: './Eric-Dai-Resume.pdf',
-    },
+    content: {},
   },
   skills: {
     uiBase: 'ui-medium',

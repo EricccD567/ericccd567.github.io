@@ -35,10 +35,20 @@
                       </li>
                     </ul>
                   </li>
-                  <li role="menu-item" tabindex="0" aria-haspopup="false">
+                  <li
+                    id="menu-desktop-projects"
+                    role="menu-item"
+                    tabindex="0"
+                    aria-haspopup="false"
+                  >
                     Projects
                   </li>
-                  <li role="menu-item" tabindex="0" aria-haspopup="false">
+                  <li
+                    id="menu-desktop-experience"
+                    role="menu-item"
+                    tabindex="0"
+                    aria-haspopup="false"
+                  >
                     Experience
                   </li>
                 </ul>
@@ -52,8 +62,18 @@
                       height="220"
                     />
                     <ul role="menu">
-                      <li role="menu-item" class="divider"><a>Projects</a></li>
-                      <li role="menu-item" class="divider">
+                      <li
+                        id="menu-mobile-projects"
+                        role="menu-item"
+                        class="divider"
+                      >
+                        <a>Projects</a>
+                      </li>
+                      <li
+                        id="menu-mobile-experience"
+                        role="menu-item"
+                        class="divider"
+                      >
                         <a>Experience</a>
                       </li>
                       <li role="menu-item" class="divider"><a>Eric D.</a></li>
@@ -124,13 +144,13 @@
               </section>
             </main>
           </div>
-          <div id="console" class="hidden">
+          <div id="console" class="center-btn hidden">
             <iframe
               id="console-content"
+              class="max-space"
+              src=""
               title="console"
               frameborder="0"
-              width="100%"
-              height="100%"
             ></iframe>
             <button
               id="console-btn-close"
@@ -151,13 +171,13 @@
           </div>
         </div>
         <div id="ui-medium" class="ui hidden">
-          <div id="resume" class="hidden">
+          <div id="resume" class="center-btn hidden">
             <iframe
               id="resume-content"
+              class="max-space"
+              src="./Eric-Dai-Resume.pdf"
               title="resume"
               frameborder="0"
-              width="100%"
-              height="100%"
             ></iframe>
             <button
               id="resume-btn-close"
@@ -167,7 +187,7 @@
               Close
             </button>
           </div>
-          <div id="skills" class="hidden">
+          <div id="skills" class="center-btn hidden">
             <div id="skills-content">
               <h2 id="tech-skills-heading" class="ui-text">Technical Skills</h2>
               <h2 id="soft-skills-heading" class="ui-text">Soft Skills</h2>
