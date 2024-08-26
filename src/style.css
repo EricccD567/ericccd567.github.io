@@ -291,6 +291,12 @@ li:has(img) {
   align-items: flex-start;
 }
 
+#resume-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #skills-content {
   overflow: auto;
   padding: 0 clamp(0rem, 3.5vw, 5rem);
