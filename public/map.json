@@ -898,13 +898,13 @@
           "y": 64.1818181818182
         },
         {
-          "height": 18,
+          "height": 18.4,
           "id": 75,
           "name": "computer",
           "rotation": 0,
           "type": "interactive",
           "visible": true,
-          "width": 14.1818181818182,
+          "width": 14.2,
           "x": 272.727272727273,
           "y": 72.3636363636364
         },
@@ -1496,13 +1496,13 @@
           "y": 69.8181818181818
         },
         {
-          "height": 10.3636363636364,
+          "height": 9,
           "id": 117,
           "name": "about",
           "rotation": 0,
           "type": "interactive",
           "visible": true,
-          "width": 11.4545454545455,
+          "width": 11,
           "x": 244.181818181818,
           "y": 79.2727272727273
         },

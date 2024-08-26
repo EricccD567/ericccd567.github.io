@@ -1,66 +1,5 @@
 import { data } from './constants';
 
-{
-  /*
-<div
-  style="
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  "
->
-  <h2 style="font-size: clamp(1.5rem, 3vw, 2.5rem)">
-    Tuesday
-  </h2>
-  <p style="font-size: clamp(0.9rem, 1.8vw, 1.5rem)">
-    <strong>2022</strong>
-  </p>
-  <div
-    style="
-      font-size: clamp(0.5rem, 1vw, 0.8rem);
-      margin-bottom: 0.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.2rem 0.8rem;
-    "
-  >
-    <a class="nes-badge" style="cursor: default">
-      <span class="is-dark">Frontend</span>
-    </a>
-  </div>
-  <p
-    style="
-      font-size: clamp(1rem, 1.2vw, 1.7rem);
-      text-align: justify;
-      margin-bottom: 0.5rem;
-      max-width: 75ch;
-    "
-  >
-    Team task management system. Lorem ipsum dolor sit amet
-    consectetur adipisicing elit. Atque autem delectus ut
-    nihil voluptatem, ratione qui illum, quibusdam natus
-    voluptas porro id maxime doloribus ullam, voluptate nemo
-    placeat magni quod!
-  </p>
-  <a
-    href=""
-    target="_blank"
-    rel="noopener noreferrer"
-    style="
-      cursor: pointer;
-      color: inherit;
-      text-decoration: underline #212529 solid 2px;
-      margin-bottom: 4px;
-    "
-  >
-    GitHub
-  </a>
-</div>
-*/
-}
-
 export function displayUI(item, onDisplayEnd) {
   const itemData = data[item];
 
@@ -68,7 +7,7 @@ export function displayUI(item, onDisplayEnd) {
   uiBase.classList.remove('hidden');
 
   const ui = document.getElementById(itemData.ui);
-  ui.classList.remove('hidden');
+  if (item !== 'computer') ui.classList.remove('hidden');
 
   const uiClose = document.getElementById(itemData.uiClose);
 
@@ -76,6 +15,190 @@ export function displayUI(item, onDisplayEnd) {
 
   switch (item) {
     case 'computer': {
+      const uiBoot = document.getElementById('boot');
+      uiBoot.classList.remove('hidden');
+
+      const progressBar = document.getElementById('progress-bar');
+      const intervalRef = setInterval(() => {
+        const progress = parseInt(progressBar.getAttribute('value'));
+        if (progress < 100) {
+          progressBar.setAttribute('value', (progress + 1).toString());
+          return;
+        }
+        uiBoot.classList.add('hidden');
+        progressBar.setAttribute('value', '0');
+        ui.classList.remove('hidden');
+        clearInterval(intervalRef);
+      }, 10);
+
+      const uiNavbarDesktop = document.getElementById('computer-menu-desktop');
+      const uiNavbarMobile = document.getElementById('computer-menu-mobile');
+
+      const mediaQuery = window.matchMedia('(min-width: 30em)');
+
+      const handleUINavbar = (mq) => {
+        if (mq.matches) {
+          uiNavbarDesktop.classList.remove('hidden');
+          uiNavbarMobile.classList.add('hidden');
+        } else {
+          uiNavbarDesktop.classList.add('hidden');
+          uiNavbarMobile.classList.remove('hidden');
+        }
+      };
+
+      handleUINavbar(mediaQuery);
+
+      const updateUINavbar = (e) => {
+        handleUINavbar(e);
+      };
+
+      mediaQuery.addEventListener('change', updateUINavbar);
+
+      const uiNavbarDesktopProjects = document.getElementById(
+        'menu-desktop-projects'
+      );
+      const uiNavbarDesktopExperience = document.getElementById(
+        'menu-desktop-experience'
+      );
+      const uiNavbarMobileProjects = document.getElementById(
+        'menu-mobile-projects'
+      );
+      const uiNavbarMobileExperience = document.getElementById(
+        'menu-mobile-experience'
+      );
+
+      const uiProjects = document.getElementById('projects-content');
+      const uiExperience = document.getElementById('experience-content');
+
+      const clickProjects = () => {
+        uiProjects.style.zIndex = '2';
+        uiExperience.style.zIndex = '1';
+      };
+      const clickExperience = () => {
+        uiProjects.style.zIndex = '1';
+        uiExperience.style.zIndex = '2';
+      };
+
+      uiNavbarDesktopProjects.addEventListener('click', clickProjects);
+      uiNavbarMobileProjects.addEventListener('click', clickProjects);
+
+      uiNavbarDesktopExperience.addEventListener('click', clickExperience);
+      uiNavbarMobileExperience.addEventListener('click', clickExperience);
+
+      const projectsArray = itemData.content.projects;
+      const experienceArray = itemData.content.experience;
+
+      const projectsCount = projectsArray.length;
+      const uiProjectsCount = document.getElementById('projects-count');
+      uiProjectsCount.innerText = projectsCount.toString();
+
+      const experienceCount = experienceArray.length;
+      const uiExperienceCount = document.getElementById('experience-count');
+      uiExperienceCount.innerText = experienceCount.toString();
+
+      const handleTasksArray = (tasksArray) => {
+        const tasksHTML = tasksArray.reduce((accumulator, currentValue) => {
+          const name = currentValue.name;
+          const year = currentValue.year;
+          const tags = currentValue.tags;
+          const tagsHTML = tags.reduce((acc1, cv1) => {
+            acc1 += `
+              <a class="nes-badge" style="cursor: default">
+                <span class="is-dark">${cv1}</span>
+              </a>
+            `;
+            return acc1;
+          }, '');
+          const description = currentValue.description;
+          const links = currentValue.links;
+          const linksHTML = links.reduce((acc2, cv2) => {
+            const host = cv2.host;
+            const link = cv2.link;
+            acc2 += `
+              <a
+                href="${link}"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="
+                  cursor: pointer;
+                  font-size: clamp(0.9rem, 1.8vw, 1.5rem);
+                  color: inherit;
+                  text-decoration: underline #212529 solid 2px;
+                  margin-bottom: 6px;
+                "
+              >
+                ${host}
+              </a>
+            `;
+            return acc2;
+          }, '');
+          accumulator += `
+            <div
+              style="
+                margin-bottom: 2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              "
+            >
+              <h2
+                style="
+                  font-size: clamp(1.5rem, 3vw, 2.5rem);
+                  text-align: center;
+                "
+              >
+                ${name}
+              </h2>
+              <p style="font-size: clamp(0.9rem, 1.8vw, 1.5rem)">
+                <strong>${year}</strong>
+              </p>
+              <div
+                style="
+                  font-size: clamp(0.5rem, 1vw, 0.8rem);
+                  margin-bottom: 0.5rem;
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  gap: 0.2rem 0.8rem;
+                "
+              >
+                ${tagsHTML}
+              </div>
+              <p
+                style="
+                  font-size: clamp(0.9rem, 1.8vw, 1.5rem);
+                  margin-bottom: 0.5rem;
+                  max-width: 70ch;
+                "
+              >
+                ${description}
+              </p>
+              ${linksHTML}
+            </div>
+          `;
+          return accumulator;
+        }, '');
+        return tasksHTML;
+      };
+
+      const projects = document.getElementById('projects');
+      projects.innerHTML = handleTasksArray(projectsArray);
+
+      const experience = document.getElementById('experience');
+      experience.innerHTML = handleTasksArray(experienceArray);
+
+      onClose = () => {
+        mediaQuery.removeEventListener('change', updateUINavbar);
+        uiNavbarDesktopProjects.removeEventListener('click', clickProjects);
+        uiNavbarMobileProjects.removeEventListener('click', clickProjects);
+        uiNavbarDesktopExperience.removeEventListener('click', clickExperience);
+        uiNavbarMobileExperience.removeEventListener('click', clickExperience);
+        uiProjectsCount.innerText = '';
+        uiExperienceCount.innerText = '';
+        projects.innerHTML = '';
+        experience.innerHTML = '';
+      };
+
       break;
     }
     case 'console': {

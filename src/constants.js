@@ -215,34 +215,6 @@ const skillsContent = {
       skill: 'React.js',
       level: 6,
     },
-    {
-      skill: 'HCI',
-      level: 6,
-    },
-    {
-      skill: 'Java',
-      level: 5,
-    },
-    {
-      skill: 'C',
-      level: 5,
-    },
-    {
-      skill: 'Networking',
-      level: 5,
-    },
-    {
-      skill: 'MongoDB',
-      level: 4,
-    },
-    {
-      skill: 'Security',
-      level: 4,
-    },
-    {
-      skill: 'SQL',
-      level: 3,
-    },
   ],
   soft: [
     {
@@ -263,15 +235,11 @@ const skillsContent = {
     },
     {
       skill: 'Communication',
-      level: 7,
+      level: 8,
     },
     {
       skill: 'Teamwork',
-      level: 7,
-    },
-    {
-      skill: 'Leadership',
-      level: 5,
+      level: 8,
     },
   ],
 };
