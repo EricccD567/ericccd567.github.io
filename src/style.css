@@ -276,7 +276,7 @@ li:has(img) {
 
 #console {
   padding: 1rem;
-  background-color: rgba(255, 189, 189, 1);
+  background-color: #5d8ddb;
   border: solid 3px #000;
   border-radius: 0;
 }
