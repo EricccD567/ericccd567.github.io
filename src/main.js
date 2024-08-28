@@ -132,7 +132,7 @@ k.scene('main', async (playerPos) => {
         if (boundary.type === 'interactive') {
           player.onCollide(boundary.name, () => {
             if (boundary.name === 'console') {
-              k.go('gamestart', { x: player.pos.x + 5, y: player.pos.y });
+              k.go('gamestart', { x: player.pos.x + 35, y: player.pos.y });
               return;
             }
             player.speed = 0;
