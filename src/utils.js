@@ -1,7 +1,9 @@
-import { data } from './constants';
+import { mainData } from './constants';
 
 export function displayUI(item, onDisplayEnd) {
-  const itemData = data[item];
+  if (item === 'console') return;
+
+  const itemData = mainData[item];
 
   const uiBase = document.getElementById(itemData.uiBase);
   uiBase.classList.remove('hidden');
@@ -29,7 +31,7 @@ export function displayUI(item, onDisplayEnd) {
         progressBar.setAttribute('value', '0');
         ui.classList.remove('hidden');
         clearInterval(intervalRef);
-      }, 10);
+      }, 7);
 
       const uiNavbarDesktop = document.getElementById('computer-menu-desktop');
       const uiNavbarMobile = document.getElementById('computer-menu-mobile');
@@ -123,7 +125,7 @@ export function displayUI(item, onDisplayEnd) {
                   cursor: pointer;
                   font-size: clamp(0.9rem, 1.8vw, 1.5rem);
                   color: inherit;
-                  text-decoration: underline #212529 solid 2px;
+                  text-decoration: underline #212529 solid 2px !important;
                   margin-bottom: 6px;
                 "
               >
@@ -199,9 +201,6 @@ export function displayUI(item, onDisplayEnd) {
         experience.innerHTML = '';
       };
 
-      break;
-    }
-    case 'console': {
       break;
     }
     case 'resume': {

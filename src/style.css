@@ -155,7 +155,7 @@ p {
 
 #computer {
   cursor: auto;
-  background-image: url(../wallpaper.jpg);
+  background-image: url(../computer/wallpaper.jpg);
   background-origin: border-box;
   border: dotted 2px #000;
   border-radius: inherit;
@@ -272,13 +272,6 @@ li:has(img) {
   background-color: #fff;
   width: fit-content;
   margin: auto;
-}
-
-#console {
-  padding: 1rem;
-  background-color: #5d8ddb;
-  border: solid 3px #000;
-  border-radius: 0;
 }
 
 #boot {
