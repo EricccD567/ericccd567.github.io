@@ -39,6 +39,7 @@ k.loadSprite('player', './spritesheet-player.png', {
 });
 
 k.loadSprite('map', './map.png');
+k.loadSprite('roof', './roof.png');
 
 k.setBackground(k.Color.fromHex(MAIN_BG_COLOR));
 
@@ -83,6 +84,13 @@ k.scene('main', async (playerPos) => {
     'player',
   ]);
 
+  const roof = k.make([
+    k.sprite('roof'),
+    k.pos(0),
+    k.scale(MAIN_SCALE_FACTOR),
+    k.opacity(0),
+  ]);
+
   function onRelease() {
     if (player.direction === 'down') {
       player.play('idle-down');
@@ -92,6 +100,9 @@ k.scene('main', async (playerPos) => {
       player.play('idle-side');
     }
   }
+
+  let doorTopY = 0;
+  let doorBotY = 0;
 
   for (const layer of layers) {
     if (layer.name === 'boundaries') {
@@ -155,7 +166,36 @@ k.scene('main', async (playerPos) => {
         }
       }
     }
+
+    if (layer.name === 'entrances') {
+      for (const entrance of layer.objects) {
+        map.add([
+          k.area({
+            shape: new k.Rect(k.vec2(0), entrance.width, entrance.height),
+          }),
+          k.pos(entrance.x, entrance.y),
+          entrance.name,
+          entrance.type,
+        ]);
+
+        player.onCollide(entrance.name, () => {
+          if (roof.opacity === 0) {
+            roof.opacity = 1;
+          } else {
+            roof.opacity = 0;
+          }
+        });
+
+        if (entrance.name === 'top') {
+          doorTopY = entrance.y * MAIN_SCALE_FACTOR;
+        } else if (entrance.name === 'bot') {
+          doorBotY = entrance.y * MAIN_SCALE_FACTOR;
+        }
+      }
+    }
   }
+
+  k.add(roof);
 
   setCamScale(k);
 
@@ -165,6 +205,21 @@ k.scene('main', async (playerPos) => {
 
   k.onUpdate(() => {
     k.camPos(player.pos.x, player.pos.y + 75);
+
+    if (
+      roof.opacity === 0 &&
+      (player.pos.y < doorTopY || player.pos.y > doorBotY)
+    ) {
+      roof.opacity = 1;
+    }
+
+    if (
+      roof.opacity === 1 &&
+      doorTopY < player.pos.y &&
+      player.pos.y < doorBotY
+    ) {
+      roof.opacity = 0;
+    }
   });
 
   k.onMousePress((mouseBtn) => {

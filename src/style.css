@@ -333,11 +333,14 @@ li:has(img) {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 }
 
 #start-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 }
 
