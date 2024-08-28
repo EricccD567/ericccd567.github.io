@@ -101,9 +101,6 @@ k.scene('main', async (playerPos) => {
     }
   }
 
-  let doorTopY = 0;
-  let doorBotY = 0;
-
   for (const layer of layers) {
     if (layer.name === 'boundaries') {
       for (const boundary of layer.objects) {
@@ -166,33 +163,6 @@ k.scene('main', async (playerPos) => {
         }
       }
     }
-
-    if (layer.name === 'entrances') {
-      for (const entrance of layer.objects) {
-        map.add([
-          k.area({
-            shape: new k.Rect(k.vec2(0), entrance.width, entrance.height),
-          }),
-          k.pos(entrance.x, entrance.y),
-          entrance.name,
-          entrance.type,
-        ]);
-
-        player.onCollide(entrance.name, () => {
-          if (roof.opacity === 0) {
-            roof.opacity = 1;
-          } else {
-            roof.opacity = 0;
-          }
-        });
-
-        if (entrance.name === 'top') {
-          doorTopY = entrance.y * MAIN_SCALE_FACTOR;
-        } else if (entrance.name === 'bot') {
-          doorBotY = entrance.y * MAIN_SCALE_FACTOR;
-        }
-      }
-    }
   }
 
   k.add(roof);
@@ -206,19 +176,25 @@ k.scene('main', async (playerPos) => {
   k.onUpdate(() => {
     k.camPos(player.pos.x, player.pos.y + 75);
 
+    const unscaledPlayerPosX = player.pos.x / MAIN_SCALE_FACTOR;
+    const unscaledPlayerPosY = player.pos.y / MAIN_SCALE_FACTOR;
     if (
-      roof.opacity === 0 &&
-      (player.pos.y < doorTopY || player.pos.y > doorBotY)
-    ) {
-      roof.opacity = 1;
-    }
-
-    if (
-      roof.opacity === 1 &&
-      doorTopY < player.pos.y &&
-      player.pos.y < doorBotY
+      (unscaledPlayerPosX > 176 &&
+        unscaledPlayerPosX < 298 &&
+        unscaledPlayerPosY > 72 &&
+        unscaledPlayerPosY < 185) ||
+      (unscaledPlayerPosX >= 144 &&
+        unscaledPlayerPosX <= 176 &&
+        unscaledPlayerPosY > 120 &&
+        unscaledPlayerPosY < 152) ||
+      (unscaledPlayerPosX > 53 &&
+        unscaledPlayerPosX < 144 &&
+        unscaledPlayerPosY > 105 &&
+        unscaledPlayerPosY < 168)
     ) {
       roof.opacity = 0;
+    } else {
+      roof.opacity = 1;
     }
   });
 
