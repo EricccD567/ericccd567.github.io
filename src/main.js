@@ -43,6 +43,24 @@ k.loadSprite('map', './map.png');
 k.setBackground(k.Color.fromHex(MAIN_BG_COLOR));
 
 k.scene('main', async (playerPos) => {
+  const uiStart = document.getElementById('ui-start');
+  if (!uiStart.classList.contains('hidden')) {
+    const startBtn = document.getElementById('start-btn');
+
+    function onStartClick() {
+      uiStart.classList.add('hidden');
+      startBtn.removeEventListener('click', onStartClick);
+    }
+
+    startBtn.addEventListener('click', onStartClick);
+
+    addEventListener('keypress', (key) => {
+      if (key.code === 'Enter') {
+        startBtn.click();
+      }
+    });
+  }
+
   const mapData = await (await fetch('./map.json')).json();
   const layers = mapData.layers;
 
