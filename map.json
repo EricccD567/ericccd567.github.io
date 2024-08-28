@@ -926,20 +926,20 @@
           "rotation": 0,
           "type": "interactive",
           "visible": true,
-          "width": 7.99999999999997,
-          "x": 228.545454545455,
-          "y": 70.5454545454545
+          "width": 8.5,
+          "x": 228,
+          "y": 70.7
         },
         {
-          "height": 7.63636363636365,
+          "height": 8,
           "id": 78,
           "name": "skills",
           "rotation": 0,
           "type": "interactive",
           "visible": true,
-          "width": 7.45454545454544,
-          "x": 196.545454545455,
-          "y": 70.7272727272727
+          "width": 8.5,
+          "x": 196,
+          "y": 70.7
         },
         {
           "height": 0,
