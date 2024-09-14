@@ -57,11 +57,11 @@ const computerContent = {
       links: [
         {
           host: 'GitHub',
-          link: 'https://github.com/EricccD567/TimerQ',
+          link: 'https://github.com/EricccD567/timerq',
         },
         {
           host: 'Website',
-          link: 'https://ericccd567.github.io/TimerQ/',
+          link: 'https://ericccd567.github.io/timerq/',
         },
       ],
     },
