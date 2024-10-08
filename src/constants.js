@@ -126,11 +126,11 @@ const computerContent = {
       ],
     },
     {
-      name: 'txt2report',
+      name: 'AI Receipt Scanner',
       year: '2024-',
-      tags: ['Development'],
+      tags: ['AI', 'Development'],
       description:
-        "An auto format report creator. It's curently in development so check back soon!",
+        'Scan multiple receipts and extract data of items including brand, price, count, type, store, and date. Uses a Document Understanding Transformer (Donut) model with own trained dataset on Australian receipts. Team of 3. Currently in development.',
       links: [],
     },
   ],
