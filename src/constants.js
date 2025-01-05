@@ -137,7 +137,7 @@ const computerContent = {
   experience: [
     {
       name: 'ac-redesign',
-      year: '2021',
+      year: '2022',
       tags: ['UI/UX', 'Designer'],
       description:
         'Designed a modernised mockup of a desktop website homepage for a bicycle shop. Provided concepts for the shop owner based on design principles and usability heuristics.',
